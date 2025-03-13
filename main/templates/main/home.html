@@ -1,0 +1,80 @@
+{% extends 'main/base.html' %}
+{% load custom_tags %}
+
+{% block content %}
+<div class="container my-5">
+  <h1>Добро пожаловать!</h1>
+  <p>Мы предоставляем медицинские услуги высокого качества.</p>
+
+  <h2 class="mt-5">Наши услуги</h2>
+  <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {% comment %} Группируем услуги по 3 {% endcomment %}
+      {% for service_group in services|chunks:3 %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <div class="row">
+          {% for service in service_group %}
+          <div class="col-md-4">
+            <div class="card mb-3" style="width: 100%;">
+              {% if service.image %}
+              <img src="{{ service.image.url }}" class="card-img-top" alt="{{ service.title }}" style="width:100%; height:300px; object-fit:contain;">
+              {% else %}
+              <img src="https://via.placeholder.com/400x300?text=Нет+изображения" class="card-img-top" alt="{{ service.title }}" style="width:100%; height:300px; object-fit:contain;">
+              {% endif %}
+              <div class="card-body text-center">
+                <h5 class="card-title">{{ service.title }}</h5>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#servicesCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Предыдущий</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#servicesCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Следующий</span>
+    </button>
+  </div>
+
+  <h2 class="mt-5">Наши врачи</h2>
+  <div id="doctorsCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {% comment %} Группируем врачей по 3 {% endcomment %}
+      {% for doctor_group in doctors|chunks:3 %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <div class="row">
+          {% for doctor in doctor_group %}
+          <div class="col-md-4">
+            <div class="card mb-3" style="width: 100%;">
+              {% if doctor.photo %}
+              <img src="{{ doctor.photo.url }}" class="card-img-top" alt="{{ doctor.name }}" style="width:100%; height:300px; object-fit:contain;">
+              {% else %}
+              <img src="https://via.placeholder.com/400x300?text=Нет+изображения" class="card-img-top" alt="{{ doctor.name }}" style="width:100%; height:300px; object-fit:contain;">
+              {% endif %}
+              <div class="card-body text-center">
+                <h5 class="card-title">{{ doctor.name }}</h5>
+                <p class="card-text">{{ doctor.specialization }}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#doctorsCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Предыдущий</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#doctorsCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Следующий</span>
+    </button>
+  </div>
+</div>
+{% endblock %}

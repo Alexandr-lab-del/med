@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Свяжитесь с нами</h1>
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title">Контактная информация</h3>
+          <p class="card-text">
+            <strong>Адрес компании:</strong> ул. Аккуратова, 2
+          </p>
+          <p class="card-text">
+            <strong>Телефоны:</strong><br>
+            +7 (111) 222-33-44<br>
+            +7 (555) 666-77-88
+          </p>
+          <p class="card-text">
+            <strong>Email:</strong><br>
+            infoCyganin@gmail.com
+          </p>
+          <p class="card-text">
+            <strong>Метро:</strong><br>
+            Удельная, Пионерская
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h3 class="mb-0">Карта проезда</h3>
+        </div>
+        <div class="card-body p-0">
+          <iframe
+            src="https://www.google.com/maps?q=ул.%20Аккуратова,%202,%20Санкт-Петербург,%20197341&output=embed"
+            width="100%"
+            height="350"
+            frameborder="0"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

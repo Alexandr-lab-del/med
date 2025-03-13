@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="container my-5">
+  <h1 class="mb-4">Наши услуги</h1>
+  <ul class="list-group">
+    {% for service in services|dictsort:"title" %}
+    <li class="list-group-item">
+      <a href="{% url 'service_detail' service.pk %}" style="text-decoration: none; color: black;">
+        {{ service.title }}
+      </a>
+    </li>
+    {% empty %}
+    <li class="list-group-item">Услуги не найдены.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "main/base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h3 class="mb-0">Изменить время записи</h3>
+        </div>
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="d-flex justify-content-between mt-4">
+              <button type="submit" class="btn btn-success">Сохранить изменения</button>
+              <a href="{% url 'dashboard' %}" class="btn btn-secondary">Отмена</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Медицинская диагностика</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #f8f9fa;
+      padding: 20px 0;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    }
+
+    .footer-btn {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 1.1rem;
+    }
+
+    .content-wrap {
+      padding-bottom: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+
+      <div class="d-flex align-items-center">
+        <span class="navbar-brand mb-0 h1">МедДиагностика</span>
+        <div class="ms-4">
+          <a class="btn btn-outline-primary me-2" href="/">Главная</a>
+          <a class="btn btn-outline-primary me-2" href="/about/">О компании</a>
+          <a class="btn btn-outline-primary me-2" href="/services/">Услуги</a>
+          <a class="btn btn-outline-primary" href="/doctors/">Специалисты</a>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column align-items-end">
+        <a class="btn btn-secondary mb-1" href="/login/">Войти</a>
+        <a class="btn btn-secondary mb-1" href="/register/">Регистрация</a>
+        <a class="btn btn-secondary" href="/dashboard/">Личный кабинет</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container mt-5 content-wrap">
+    {% block content %}{% endblock %}
+  </div>
+
+  <footer>
+    <div class="container d-flex justify-content-center">
+      <a class="btn btn-lg btn-primary footer-btn" href="/contacts/">Контакты</a>
+      <a class="btn btn-lg btn-primary footer-btn" href="/support/">Поддержка</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="container my-5">
+  <h1 class="mb-4">{{ service.title }}</h1>
+  <div class="row align-items-center">
+    <div class="col-md-6">
+      <p><strong>Описание:</strong></p>
+      <p>{{ service.description }}</p>
+      <p><strong>Цена:</strong> {{ service.price }} руб.</p>
+    </div>
+    <div class="col-md-6 text-center">
+      {% if service.image %}
+      <img src="{{ service.image.url }}" alt="{{ service.title }}" class="img-fluid rounded">
+      {% endif %}
+    </div>
+  </div>
+  <div class="mt-4">
+    <a href="{% url 'make_appointment' %}?service={{ service.pk }}" class="btn btn-primary me-2" target="_blank">Записаться на приём</a>
+    <a href="{% url 'services' %}" class="btn btn-secondary">Назад к списку услуг</a>
+  </div>
+</div>
+{% endblock %}
