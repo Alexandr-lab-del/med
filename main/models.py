@@ -35,3 +35,30 @@ class Appointment(models.Model):
 
     def __str__(self):
         return f"{self.user.username} -> {self.doctor.name} | {self.date} {self.time}"
+
+
+class AboutPage(models.Model):
+    title = models.CharField(max_length=200, help_text="Заголовок страницы")
+    content = models.TextField(help_text="Основной текст страницы")
+    image = models.ImageField(upload_to='about/', blank=True, null=True, help_text="Изображение для страницы")
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Страница 'О компании'"
+        verbose_name_plural = "Страницы 'О компании'"
+
+
+class ContactInfo(models.Model):
+    phone = models.CharField(max_length=20, help_text="Номер телефона")
+    email = models.EmailField(help_text="Email")
+    address = models.CharField(max_length=255, help_text="Адрес")
+    map_embed = models.TextField(blank=True, null=True, help_text="Код для встраивания карты (например, iframe)")
+
+    def __str__(self):
+        return "Контактная информация"
+
+    class Meta:
+        verbose_name = "Контактная информация"
+        verbose_name_plural = "Контактная информация"

@@ -1,4 +1,4 @@
-from .models import Service, Doctor
+from .models import Service, Doctor, AboutPage, ContactInfo
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import AppointmentForm, SupportForm
@@ -13,11 +13,17 @@ def home(request):
 
 
 def about(request):
-    return render(request, 'main/about.html')
+    about_items = AboutPage.objects.all().order_by('id')
+    doctors = Doctor.objects.all()
+    return render(request, 'main/about.html', {
+        'about_items': about_items,
+        'doctors': doctors,
+    })
 
 
 def contacts(request):
-    return render(request, 'main/contacts.html')
+    contact = ContactInfo.objects.first()
+    return render(request, 'main/contacts.html', {'contact': contact})
 
 
 def services(request):

@@ -7,22 +7,27 @@
       <div class="card h-100 shadow-sm">
         <div class="card-body">
           <h3 class="card-title">Контактная информация</h3>
-          <p class="card-text">
-            <strong>Адрес компании:</strong> ул. Аккуратова, 2
-          </p>
-          <p class="card-text">
-            <strong>Телефоны:</strong><br>
-            +7 (111) 222-33-44<br>
-            +7 (555) 666-77-88
-          </p>
-          <p class="card-text">
-            <strong>Email:</strong><br>
-            infoCyganin@gmail.com
-          </p>
-          <p class="card-text">
-            <strong>Метро:</strong><br>
-            Удельная, Пионерская
-          </p>
+          {% if contact %}
+            {% if contact.address %}
+              <p class="card-text">
+                <strong>Адрес компании:</strong> {{ contact.address }}
+              </p>
+            {% endif %}
+            {% if contact.phone %}
+              <p class="card-text">
+                <strong>Телефон:</strong><br>
+                {{ contact.phone|linebreaksbr }}
+              </p>
+            {% endif %}
+            {% if contact.email %}
+              <p class="card-text">
+                <strong>Email:</strong><br>
+                {{ contact.email }}
+              </p>
+            {% endif %}
+          {% else %}
+            <p class="card-text">Контактная информация не заполнена. Пожалуйста, свяжитесь с администратором.</p>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -32,14 +37,19 @@
           <h3 class="mb-0">Карта проезда</h3>
         </div>
         <div class="card-body p-0">
-          <iframe
-            src="https://www.google.com/maps?q=ул.%20Аккуратова,%202,%20Санкт-Петербург,%20197341&output=embed"
-            width="100%"
-            height="350"
-            frameborder="0"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"></iframe>
+          {% if contact and contact.map_embed %}
+            {{ contact.map_embed|safe }}
+          {% else %}
+            <iframe
+              src="https://www.google.com/maps?q=ул.%20Аккуратова,%202,%20Санкт-Петербург,%20197341&output=embed"
+              width="100%"
+              height="350"
+              frameborder="0"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy">
+            </iframe>
+          {% endif %}
         </div>
       </div>
     </div>
